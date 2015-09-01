@@ -93,11 +93,8 @@ public class ProviderCheck {
 		/*
 		 * 用户电话需要满足的规则：
 		 * 1. 可以是电话号和手机号
-		 * 2. 
-		 * TODO: 校验电话的正则表达式
 		 */
-		
-		return true ;
+		return Pattern.compile("1([\\d]{10})|((\\+[0-9]{2,4})?\\(?[0-9]+\\)?-?)?[0-9]{7,8}").matcher(telephone).matches() ;
 	}
 	/**
 	 * 校验地址合法性

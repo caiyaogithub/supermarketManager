@@ -20,9 +20,6 @@ public class DBManager {
 	public static Connection getConnection() throws Exception {
 			Class.forName(XmlUtils.getValue("connection-driver","config.xml")) ;
 			String url = XmlUtils.getValue("connection-url","config.xml") ;
-			/*
-			 * TODO: 从xml文件中读取
-			 */
 			Connection conn = DriverManager.getConnection(url, XmlUtils.getValue("connection-user","config.xml"), XmlUtils.getValue("connection-password","config.xml")) ;
 			return conn ;
 	}
