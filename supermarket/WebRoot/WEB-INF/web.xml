@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <welcome-file-list>
+    <welcome-file>admin_login.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- Filter: 设置请求和相应参数编码 -->
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- 控制访问admin/下的资源 -->
+  <filter>
+  	<filter-name>AdminAuthorityControlFilter</filter-name>
+  	<filter-class>filter.AdminAuthorityControlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AdminAuthorityControlFilter</filter-name>
+  	<url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  
+   <!-- 控制访问/userManager/*下的资源 -->
+  <filter>
+  	<filter-name>UserManagerAuthorityControlFilter</filter-name>
+  	<filter-class>filter.AdminAuthorityControlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>UserManagerAuthorityControlFilter</filter-name>
+  	<url-pattern>/userManager/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 控制访问/providerManager/*下的资源 -->
+  <filter>
+  	<filter-name>ProviderManagerFilter</filter-name>
+  	<filter-class>filter.CommonAuthorityControlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>ProviderManagerFilter</filter-name>
+  	<url-pattern>/providerManager/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 控制访问/billManager/*下的资源 -->
+  <filter>
+  	<filter-name>BillManagerFilter</filter-name>
+  	<filter-class>filter.CommonAuthorityControlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>BillManagerFilter</filter-name>
+  	<url-pattern>/billManager/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 管理员登录 -->
+  <servlet>
+  	<servlet-name>AdminLoginServlet</servlet-name>
+  	<servlet-class>authority.servlet.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AdminLoginServlet</servlet-name>
+  	<url-pattern>/authority/AdminLogin</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 直接访问Admin_main.jsp页面 -->
+  <servlet>
+  	<servlet-name>VisitAdminMainPage</servlet-name>
+  	<servlet-class>authority.servlet.VisitAdminMainPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VisitAdminMainPage</servlet-name>
+  	<url-pattern>/VisitAdminMainPage</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查询用户列表 -->
+   <servlet>
+  	<servlet-name>ListUserServlet</servlet-name>
+  	<servlet-class>userManager.serlvet.ListUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ListUserServlet</servlet-name>
+  	<url-pattern>/userManager/listUser</url-pattern>
+  </servlet-mapping>
+  <!-- 添加用户 -->
+  <servlet>
+  	<servlet-name>AddUserServlet</servlet-name>
+  	<servlet-class>userManager.serlvet.AddUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddUserServlet</servlet-name>
+  	<url-pattern>/userManager/addUser</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 修改用户 -->
+  <servlet>
+  	<servlet-name>ModifyUser</servlet-name>
+  	<servlet-class>userManager.serlvet.ModifyUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ModifyUser</servlet-name>
+  	<url-pattern>/userManager/modifyUser</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查看单个用户信息 -->
+  <servlet>
+  	<servlet-name>SingleUser</servlet-name>
+  	<servlet-class>userManager.serlvet.SingleUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SingleUser</servlet-name>
+  	<url-pattern>/userManager/singleUser</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 删除用户 -->
+  <servlet>
+  	<servlet-name>DeleteUser</servlet-name>
+  	<servlet-class>userManager.serlvet.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteUser</servlet-name>
+  	<url-pattern>/userManager/deleteUser</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 检查用户名是否存在 -->
+  <servlet>
+  	<servlet-name>CheckUserNameServlet</servlet-name>
+  	<servlet-class>userManager.serlvet.CheckUserNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckUserNameServlet</servlet-name>
+  	<url-pattern>/userManager/checkUserNameExist</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查询供应商列表 -->
+   <servlet>
+  	<servlet-name>ListProviderServlet</servlet-name>
+  	<servlet-class>providerManager.servlet.ListProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ListProviderServlet</servlet-name>
+  	<url-pattern>/providerManager/listProvider</url-pattern>
+  </servlet-mapping>
+  <!-- 添加供应商 -->
+  <servlet>
+  	<servlet-name>AddProviderServlet</servlet-name>
+  	<servlet-class>providerManager.servlet.AddProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddProviderServlet</servlet-name>
+  	<url-pattern>/providerManager/addProvider</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 修改供应商 -->
+  <servlet>
+  	<servlet-name>ModifyProvider</servlet-name>
+  	<servlet-class>providerManager.servlet.ModifyProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ModifyProvider</servlet-name>
+  	<url-pattern>/providerManager/modifyProvider</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查看单个供应商信息 -->
+  <servlet>
+  	<servlet-name>SingleProvider</servlet-name>
+  	<servlet-class>providerManager.servlet.SingleProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SingleProvider</servlet-name>
+  	<url-pattern>/providerManager/singleProvider</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 删除供应商 -->
+  <servlet>
+  	<servlet-name>DeleteProvider</servlet-name>
+  	<servlet-class>providerManager.servlet.DeleteProviderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteProvider</servlet-name>
+  	<url-pattern>/providerManager/deleteProvider</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 检查供应商名是否存在 -->
+  <servlet>
+  	<servlet-name>CheckProviderNameServlet</servlet-name>
+  	<servlet-class>providerManager.servlet.CheckProviderNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckProviderNameServlet</servlet-name>
+  	<url-pattern>/providerManager/checkProviderNameExist</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 根据供应商名和供应商描述模糊查询供应商信息 -->
+  <servlet>
+  	<servlet-name>ListProviderByNameAndDescServlet</servlet-name>
+  	<servlet-class>providerManager.servlet.ListProviderByNameAndDescServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ListProviderByNameAndDescServlet</servlet-name>
+  	<url-pattern>/providerManager/listProviderByNameAndDesc</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查询单个订单信息 -->
+  <servlet>
+  	<servlet-name>SingleBillServlet</servlet-name>
+  	<servlet-class>billManager.servlet.SingleBillServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>SingleBillServlet</servlet-name>
+  	<url-pattern>/billManager/singleBill</url-pattern>
+  </servlet-mapping>
+  <!-- 修改订单 -->
+  <servlet>
+  	<servlet-name>ModifyBillServlet</servlet-name>
+  	<servlet-class>billManager.servlet.ModifyBillServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>ModifyBillServlet</servlet-name>
+  	<url-pattern>/billManager/modifyBill</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 查看所有订单 -->
+  <servlet>
+  	<servlet-name>ListBillServlet</servlet-name>
+  	<servlet-class>billManager.servlet.ListBillServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>ListBillServlet</servlet-name>
+  	<url-pattern>/billManager/listBill</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 根据商品名和是否付款查询订单信息 -->
+  <servlet>
+  	<servlet-name>ListBillByNameAndIsPayServlet</servlet-name>
+  	<servlet-class>billManager.servlet.ListBillByNameAndIsPayServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>ListBillByNameAndIsPayServlet</servlet-name>
+  	<url-pattern>/billManager/listBillByNameAndisPay</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 根据订单ID删除订单 -->
+  <servlet>
+  	<servlet-name>DeleteBillServlet</servlet-name>
+  	<servlet-class>billManager.servlet.DeleteBillServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>DeleteBillServlet</servlet-name>
+  	<url-pattern>/billManager/deleteBill</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 添加订单 -->
+  <servlet>
+  	<servlet-name>AddBillServlet</servlet-name>
+  	<servlet-class>billManager.servlet.AddBillServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>AddBillServlet</servlet-name>
+  	<url-pattern>/billManager/addBill</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 访问addBill.jsp页面 -->
+  <servlet>
+  	<servlet-name>VisitAddBillPageServlet</servlet-name>
+  	<servlet-class>billManager.servlet.VisitAddBillPageServlet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>VisitAddBillPageServlet</servlet-name>
+  	<url-pattern>/billManager/visitAddBill</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 设置session生命周期 -->
+  <session-config>
+  	<session-timeout>1</session-timeout>
+  </session-config>
+</web-app>
