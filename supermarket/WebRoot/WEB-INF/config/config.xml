@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connection>
+	<connection-driver>oracle.jdbc.OracleDriver</connection-driver>
+	<connection-url>jdbc:oracle:thin:@localhost:1521:caiyao</connection-url>
+	<connection-user>supermarketuser</connection-user>
+	<connection-password>supermarket_password</connection-password>
+</connection>

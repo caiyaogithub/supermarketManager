@@ -18,13 +18,12 @@ public class DBManager {
 	 * @throws Exception
 	 */
 	public static Connection getConnection() throws Exception {
-			Class.forName("oracle.jdbc.OracleDriver") ;
-			String url = "jdbc:oracle:thin:@localhost:1521:caiyao" ;
+			Class.forName(XmlUtils.getValue("connection-driver","config.xml")) ;
+			String url = XmlUtils.getValue("connection-url","config.xml") ;
 			/*
 			 * TODO: 从xml文件中读取
-			 * 
 			 */
-			Connection conn = DriverManager.getConnection(url, "supermarketuser", "supermarket_password") ;
+			Connection conn = DriverManager.getConnection(url, XmlUtils.getValue("connection-user","config.xml"), XmlUtils.getValue("connection-password","config.xml")) ;
 			return conn ;
 	}
 	/**
