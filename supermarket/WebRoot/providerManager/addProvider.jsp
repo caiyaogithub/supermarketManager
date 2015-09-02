@@ -29,6 +29,7 @@
 </script>
 </head>
 <body>
+<div width = "500" align = "center">
  <%
 			String result = "" ;
 			if(request.getParameter("result") != null && request.getParameter("result").equals("1")){
@@ -38,14 +39,37 @@
   <div><%=result%></div>
  <h1 align = "center">添加供应商</h1>
  <form action="addProvider" method = "post" >
- <!-- 对这些字段的校验前后台都需要执行 -->
- 	供应商名：<input type = "text" name = "providername" onblur = "checkProviderNameExist(this)" />  <div id = "checkResult"></div><br/>
- 	供应商描述：<input type = "text" name = "providerDesc"/> <br/>
- 	联系人: <input type = "text" name = "linkman" /> <br/>
- 	供应商电话： <input type = "text" name = "telephone" /> <br/>
- 	传真： <input type = "text" name = "fax" /> <br/>
- 	地址： <input type = "text" name = "address" /> <br/>
- 	<input type = "submit" value = "提交" />
+ <table>
+ 	<tr>
+ 		<td>供应商名：</td>
+ 		<td><input type = "text" name = "providername" onblur = "checkProviderNameExist(this)" />  <div id = "checkResult"></div></td>
+ 	</tr>
+ 	<tr>
+ 		<td>供应商描述：</td>
+ 		<td><input type = "text" name = "providerDesc"/></td>
+ 	</tr>
+ 	<tr>
+ 		<td>联系人: </td>
+ 		<td><input type = "text" name = "linkman" /></td>
+ 	</tr>
+ 	<tr>
+ 		<td>供应商电话：</td>
+ 		<td><input type = "text" name = "telephone" /></td>
+ 	</tr>
+ 	<tr>
+ 		<td>传真：</td>
+ 		<td> <input type = "text" name = "fax" /></td>
+ 	</tr>
+ 	<tr>
+ 		<td>地址：</td>
+ 		<td><input type = "text" name = "address" /></td>
+ 	</tr>
+ 	<tr>
+ 		<td><input type = "submit" value = "提交" /></td>
+ 		<td><input type = "button" value = "取消添加" onclick = "javascript:window.history.back(-1)"/></td>
+ 	</tr>
+ </table>
  </form>
+ </div>
 </body>
 </html>

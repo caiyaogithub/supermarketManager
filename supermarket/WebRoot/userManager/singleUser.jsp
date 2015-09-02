@@ -6,6 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>单个用户信息</title>
+<script type="text/javascript">
+/**检查用户名是否存在**/
+	function checkUserNameExist(obj){
+		document.getElementById("checkResult").innerHTML = "" ;
+		// 收集数据
+		var userName = obj.value ;
+		var id = obj.parentNode.parentNode.parentNode.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("input")[0].value ;
+		alert("userName ： " + userName + "id ： " + id ) ;
+		// 发送数据
+		var xmlHttp = new XMLHttpRequest() ;
+		xmlHttp.onreadystatechange = function(){ stateChange(xmlHttp) ;}
+		xmlHttp.open("get", "../userManager/checkModifyUserName?name=" + userName + "&id=" + id , true ) ;
+		xmlHttp.send( null ) ;
+	}
+	function stateChange(xmlHttp){
+		if(xmlHttp.readyState == 4 && xmlHttp.status == 200 ){
+			if(xmlHttp.responseText != null && xmlHttp.responseText != "" ){
+				document.getElementById("checkResult").innerHTML = xmlHttp.responseText ;
+			}
+		}
+	}
+</script>
 </head>
 <body>
 	<h2 align = "center">${userInfo.userName}的信息</h2>
@@ -20,7 +42,7 @@
 	    	</tr>
 	    	<tr>
 	    		<td>用户名</td>
-	    		<td><input type = "text" name = "name" value = "${userInfo.userName }"/></td>
+	    		<td><input type = "text" name = "name" value = "${userInfo.userName }" onblur = "checkUserNameExist(this)" /><div id = "checkResult"></div></td>
 	    	</tr>
 	    	<tr>
 	    		<td>密码</td>
@@ -28,7 +50,13 @@
 	    	</tr>
 	    	<tr>
 	    		<td>性别</td>
-	    		<td><input type = "text" name = "gender"  value = "${userInfo.gender }"/></td>
+	    		<td>
+	    			<select name = "gender" >
+	    				<option value = "${userInfo.gender}">${userInfo.gender}</option>
+	    				<option value = "男">男</option>
+	    				<option value = "女">女</option>
+	    			</select>
+	    		</td>
 	    	</tr>
 	    	<tr>
 	    		<td>年龄</td>
@@ -42,8 +70,11 @@
 	    		<td>地址</td>
 	    		<td><input type = "text" name = "address"  value = "${userInfo.address }"/></td>
 	    	</tr>
+	    	<tr></tr>
+	    	<tr></tr>
 	    	<tr>
-	    		<td><input type = "submit" value = "提交修改"/></td>
+	    		<td colspan="1"><input type = "submit" value = "提交修改"/></td>
+	    		<td colspan = "1" ><input type = "button" value = "取消修改" onclick = "javascript:window.history.back(-1);" /></td>
 	    	</tr>
 	    </table>
 	</form>

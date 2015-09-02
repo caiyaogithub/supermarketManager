@@ -10,12 +10,12 @@ import java.sql.Connection;
  * @author caiyao
  *
  */
-public interface AdminLoginDAO {
+public interface LoginDAO {
 	/**
 	 * 查询Admin信息
 	 * @param name 用户名
 	 * @param password 密码
 	 * @return 是否存在结果集
 	 */
-	public boolean selectAdmin(String name , String password ) throws Exception ;
+	public boolean selectUser(String name , String password , int role ) throws Exception ;
 }

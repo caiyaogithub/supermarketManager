@@ -11,7 +11,9 @@
 		document.getElementById("checkResult").innerHTML = "" ;
 		// 收集数据
 		var userName = obj.value ;
-		alert("userName ： " + userName ) ;
+		if(obj.value == null || obj.value == "" ){
+			document.getElementById("checkResult").innerHTML = "用户名不能为空" ;
+		}
 		// 发送数据
 		var xmlHttp = new XMLHttpRequest() ;
 		xmlHttp.onreadystatechange = function(){ stateChange(xmlHttp) ;}
@@ -25,10 +27,21 @@
 			}
 		}
 	}
-	
+	function checkPsdConsistent(){
+		var password = document.getElementById("password") ;
+		var rpassword = document.getElementById("rpassword") ;
+		if(password != rpassword ){
+			document.getElementById("psdCheck").innerHTML = "两次密码输入不匹配" ;
+		}
+	}
+	function cancelAdd(){
+		
+	}
 </script>
 </head>
 <body>
+<div width = "500" align = "center" >
+	<h1>添加用户</h1>
  <%
 			String result = "" ;
 			if(request.getParameter("result") != null && request.getParameter("result").equals("1")){
@@ -36,17 +49,47 @@
 			}
 %>
   <div><%=result%></div>
- <h1 align = "center">添加用户</h1>
  <form action="addUser" method = "post" >
  <!-- 对这些字段的校验前后台都需要执行 -->
- 	用户名：<input type = "text" name = "username" onblur = "checkUserNameExist(this)" />  <div id = "checkResult"></div><br/>
- 	用户密码：<input type = "text" name = "password"/> <br/>
- 	确认密码: <input type = "text" name = "rpassword" /> <br/>
- 	用户性别 ： <input type = "text" name = "gender" /> <br/>
- 	用户年龄： <input type = "text" name = "age" /> <br/>
- 	用户电话： <input type = "text" name = "telephone" /> <br/>
- 	地址： <input type = "text" name = "address" /> <br/>
- 	<input type = "submit" value = "提交" />
+ <table>
+ 	<tr>
+ 		<td>用户名：</td>
+ 		<td><input type = "text" name = "username" onblur = "checkUserNameExist(this)" /><span id = "checkResult" ></span></td>
+ 	</tr>
+ 	<tr>
+ 		<td>用户密码：</td>
+ 		<td><input type = "text" name = "password" onblur = "checkPsdConsistent()"/></td>
+ 	</tr>
+ 	<tr>
+ 		<td>确认密码: </td>
+ 		<td><input type = "text" name = "rpassword" onblur = "checkPsdConsistent()"/> <span id = "psdCheck"></span></td>
+ 	</tr>
+ 	<tr>
+ 		<td>用户性别 ：</td>
+ 		<td><select name = "gender">
+ 			<option value = "男">男</option>
+ 			<option value = "女">女</option>
+ 		</select>
+ 		</td>
+ 	</tr>
+ 	<tr>
+ 		<td>用户年龄：</td>
+ 		<td> <input type = "text" name = "age" /></td>
+ 	</tr>
+ 	<tr>
+ 		<td>用户电话： </td>
+ 		<td><input type = "text" name = "telephone" /> </td>
+ 	</tr>
+ 	<tr>
+ 		<td>地址： </td>
+ 		<td><input type = "text" name = "address" /></td>
+ 	</tr>
+ 	<tr>
+ 		<td><input type = "submit" value = "提交" /></td>
+ 		<td><input type = "button" value = "取消添加" onclick = "javascript:window.history.back(-1);"/></td>
+ 	</tr>
+ </table>
  </form>
+</div>
 </body>
 </html>

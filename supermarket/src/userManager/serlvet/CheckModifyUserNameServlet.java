@@ -1,4 +1,4 @@
-package billManager.servlet;
+package userManager.serlvet;
 
 import java.io.IOException;
 
@@ -7,17 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import providerManager.service.ProviderService;
-import billManager.service.BillService;
-import billManager.vo.Bill;
+import userManager.service.UserService;
 /**
  * 
- * @description 查看单个订单
+ * @description 检查修改后的UserName是否与别的用户重复
  *
  * @author hello world
  *
  */
-public class SingleBillServlet extends HttpServlet {
+public class CheckModifyUserNameServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -27,14 +25,17 @@ public class SingleBillServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("id")) ;
+		String userName = req.getParameter("name") ;
 		try{
-			Bill bill = new BillService().findBillById(id) ;
-			req.setAttribute("billInfo", bill) ;
-			req.setAttribute("providers", new ProviderService().allProvider() ) ;
-			req.getRequestDispatcher("../billManager/singleBill.jsp").forward(req, resp) ;
+			if(!new UserService().checkModifyUserNameExist(userName,id)){
+				resp.getWriter().print("") ;
+			}else{
+				resp.setCharacterEncoding("utf-8") ;
+				resp.getWriter().print("用户名已经存在 ");
+			}
 		}catch(Exception e ){
 			e.printStackTrace() ;
-			resp.sendRedirect("../error.jsp") ;
+			resp.sendRedirect("../error.jsp");
 		}
 	}
-}	
+}

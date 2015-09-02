@@ -26,9 +26,15 @@
 	    	</tr>
 	    	<tr>
 	    		<td>供应商名</td>
-	    		<td><input type = "text" name = "provider" value = "${billInfo.providerName }"/></td>
+	    		<td>
+	    		<select name = "provider">
+	 				<option value = "${billInfo.providerId}" >${billInfo.providerName}</option>
+	 				<c:forEach items="${providers}" var = "providerItem">
+	 					<option value= "${providerItem.providerId }">${providerItem.providerName}</option>
+	 				</c:forEach>
+ 		  		</select>
+	    		</td>
 	    	</tr>
-	    	
 	    	<tr>
 	    		<td>价格</td>
 	    		<td><input type = "text" name = "price"  value = "${billInfo.price }"/></td>
@@ -36,7 +42,7 @@
 	    	
 	    	<tr>
 	    		<td>单位</td>
-	    		<td><input type = "text" name = "priceUnit"  value = "${billInfo.goodsUnit }"/></td>
+	    		<td><input type = "text" name = "goodsUnit"  value = "${billInfo.goodsUnit }"/></td>
 	    	</tr>
 	    	
 	    	<tr>
@@ -46,7 +52,12 @@
 	    	
 	    	<tr>
 	    		<td>是否付款</td>
-	    		<td><input type = "text" name = "isPay"  value = "${billInfo.isPay }"/></td>
+	    		<td>
+	    			<select name = "isPay" >
+	    				<option value = "${billInfo.isPay }">${billInfo.isPay == "true" ? "是" : "否" }</option>
+	    				<option value = "true">是</option>
+	    				<option value = "false">否</option>
+	    			</select>
 	    	</tr>
 	    	
 	    	<tr>
@@ -61,6 +72,7 @@
 	    	
 	    	<tr>
 	    		<td><input type = "submit" value = "提交修改"/></td>
+	    		<td colspan = "1" ><input type = "button" value = "取消修改" onclick = "javascript:window.history.back(-1);" /></td>
 	    	</tr>
 	    </table>
 	</form>

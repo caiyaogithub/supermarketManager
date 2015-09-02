@@ -69,7 +69,7 @@ public class BillManagerDaoImpl implements BillManagerDAO {
 		Connection conn = DBManager.getConnection() ;
 		String sql = 
 				"select "
-						+ "BILL_ID,b.PROVIDER_NAME,PRICE,GOODS_UNIT,GOODS_NUM,IS_PAY,GOODS_NAME,GOODS_DESC,BILL_TIME "
+						+ "BILL_ID,a.PROVIDER PROVIDER_ID ,b.PROVIDER_NAME,PRICE,GOODS_UNIT,GOODS_NUM,IS_PAY,GOODS_NAME,GOODS_DESC,BILL_TIME "
 						+ "FROM supermarket_bill a "
 						+ "inner join supermarket_provider b "
 						+ "on a.PROVIDER = b.PROVIDER_ID where BILL_ID = ? " ;

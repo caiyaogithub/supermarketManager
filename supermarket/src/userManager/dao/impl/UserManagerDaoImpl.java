@@ -92,4 +92,18 @@ public class UserManagerDaoImpl implements UserManagerDAO {
 		DBManager.releaseConn(conn) ;
 		return cachedRowSet ;
 	}
+	@Override
+	public CachedRowSet selectUserByNameExceptId(String userName, int id)
+			throws Exception {
+		Connection conn = DBManager.getConnection() ;
+		String sql = "select USER_ID ,USER_NAME ,USER_PASSWORD ,GENDER, AGE ,TELEPHONE_NUM, ADDRESS ,USER_ROLE from supermarket_user where USER_NAME = ? and USER_ID != ? " ;
+		PreparedStatement preparedStatement = conn.prepareStatement(sql) ;
+		preparedStatement.setString(1, userName ) ;
+		preparedStatement.setInt(2, id ) ;
+		CachedRowSetImpl cachedRowSet = new CachedRowSetImpl() ;
+		cachedRowSet.populate(preparedStatement.executeQuery()) ;
+		preparedStatement.close() ;
+		DBManager.releaseConn(conn) ;
+		return cachedRowSet ;
+	}
 }

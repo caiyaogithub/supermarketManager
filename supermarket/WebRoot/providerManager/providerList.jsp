@@ -70,6 +70,7 @@
 		</c:forEach>	
 	</table>
 </div>
-	<a href = "addProvider.jsp" >新增供应商》》》</a>
+	<a href = "addProvider.jsp" >新增供应商》》》</a><br/><br/><br/>
+	<a href = "../admin/admin_main.jsp">返回主功能页面》》》</a>
 </body>
 </html>

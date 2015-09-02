@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <welcome-file-list>
-    <welcome-file>admin_login.jsp</welcome-file>
+    <welcome-file>userLogin.jsp</welcome-file>
   </welcome-file-list>
   <!-- 系统启动监听器 -->
   <listener>
@@ -29,6 +29,17 @@
   	<filter-name>AdminAuthorityControlFilter</filter-name>
   	<url-pattern>/admin/*</url-pattern>
   </filter-mapping>
+  
+   <!-- 控制访问commonUser/下的资源 -->
+  <filter>
+  	<filter-name>CommonUserControl</filter-name>
+  	<filter-class>filter.CommonAuthorityControlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CommonUserControl</filter-name>
+  	<url-pattern>/commonUser/*</url-pattern>
+  </filter-mapping>
+  
   
    <!-- 控制访问/userManager/*下的资源 -->
   <filter>
@@ -68,6 +79,26 @@
   <servlet-mapping>
   	<servlet-name>AdminLoginServlet</servlet-name>
   	<url-pattern>/authority/AdminLogin</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 普通用户登录 -->
+  <servlet>
+  	<servlet-name>CommonUserLoginServlet</servlet-name>
+  	<servlet-class>authority.servlet.UserLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CommonUserLoginServlet</servlet-name>
+  	<url-pattern>/authority/UserLogin</url-pattern>
+  </servlet-mapping>
+  
+   <!-- 退出系统 -->
+  <servlet>
+  	<servlet-name>ExitServlet</servlet-name>
+  	<servlet-class>authority.servlet.ExitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ExitServlet</servlet-name>
+  	<url-pattern>/authority/exit</url-pattern>
   </servlet-mapping>
   
   <!-- 直接访问Admin_main.jsp页面 -->
@@ -137,6 +168,16 @@
   <servlet-mapping>
   	<servlet-name>CheckUserNameServlet</servlet-name>
   	<url-pattern>/userManager/checkUserNameExist</url-pattern>
+  </servlet-mapping>
+  
+    <!-- 检查修改后的用户名是否已经存在 -->
+  <servlet>
+  	<servlet-name>CheckModifyUserNameServlet</servlet-name>
+  	<servlet-class>userManager.serlvet.CheckModifyUserNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckModifyUserNameServlet</servlet-name>
+  	<url-pattern>/userManager/checkModifyUserName</url-pattern>
   </servlet-mapping>
   
   <!-- 查询供应商列表 -->
@@ -279,6 +320,6 @@
   
   <!-- 设置session生命周期 -->
   <session-config>
-  	<session-timeout>1</session-timeout>
+  	<session-timeout>30</session-timeout>
   </session-config>
 </web-app>

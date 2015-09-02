@@ -11,6 +11,7 @@
 </script>
 </head>
 <body>
+<div width = "500" align ="center">
  <%
 			String result = "" ;
 			if(request.getParameter("result") != null && request.getParameter("result").equals("1")){
@@ -18,27 +19,57 @@
 			}
 %>
   <div><%=result%></div>
+ 
  <h1 align = "center">添加订单</h1>
  <form action="addBill" method = "post" >
  <!-- 对这些字段的校验前后台都需要执行 -->
- 	供应商：<select name = "providerId">
+  <table>
+  	<tr>
+  		<td>供应商：</td>
+  		<td><select name = "provider">
  				<option>------请选择供应商------</option>
  				<c:forEach items="${providers}" var = "provider">
  					<option value="${provider.providerId}">${provider.providerName}</option>
  				</c:forEach>
- 		  </select><br/>
- 	交易价格：<input type = "text" name = "price"/> <br/>
- 	商品单位: <input type = "text" name = "goodsUnit" /> <br/>
- 	商品数量： <input type = "text" name = "goodsNum" /> <br/>
- 	是否付款： <select name = "isPay">
+ 		  </select>
+ 		  </td>
+  	</tr>
+  	<tr>
+  		<td>交易价格：</td>
+  		<td><input type = "text" name = "price"/></td>
+  	</tr>
+  	<tr>
+  		<td>商品单位:</td>
+  		<td> <input type = "text" name = "goodsUnit" /></td>
+  	</tr>
+  	<tr>
+  		<td>商品数量：</td>
+  		<td><input type = "text" name = "goodsNum" /></td>
+  	</tr>
+  	<tr>
+  		<td>是否付款：</td>
+  		<td><select name = "isPay">
  				<option value = "true">是</option>
  				<option value = "false">否</option>
- 			</select><br/>
- 	商品名称： <input type = "text" name = "goodsName" /> <br/>
- 	商品描述： <input type = "text" name = "goodsDesc" /> <br/>
+ 			</select>
+ 			</td>
+  	</tr>
+  	<tr>
+  		<td>商品名称：</td>
+  		<td><input type = "text" name = "goodsName" /></td>
+  	</tr>
+  	<tr>
+  		<td>商品描述： </td>
+  		<td><input type = "text" name = "goodsDesc" /></td>
+  	</tr>
+  	<tr>
+  		<td><input type = "submit" value = "提交" /></td>
+  		<td><input type = "button" value = "取消添加" onclick = "javascript:window.history.back(-1);"/> </td>
+  	</tr> 
+  </table>
  	<!-- yyyy-[m]m-[d]d hh:mm:ss[.f...].  -->
  	<input type = "hidden" name = "billTime" value = "<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date()) %>" /> <br/>
- 	<input type = "submit" value = "提交" />
  </form>
+ </div>
 </body>
 </html>

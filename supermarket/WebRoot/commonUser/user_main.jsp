@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户登陆</title>
+<title>用户功能页面</title>
 </head>
 <body>
-	<div width = "500" align = "center">
-	<h1>用户登陆</h1>
-		<a href = "admin_login.jsp" >管理员登陆》》》</a> <br/><br/><br/><br/>
-		<a href = "user_login.jsp" >普通用户登陆》》》</a>
-	</div>
-	
+	<span>欢迎用户：<font>${userlogin} 登录系统</font></span><br />
+	<a href = "../billManager/listBill">订单管理</a> <br/>
+	<a href = "../providerManager/listProvider">供应商管理</a><br/> 
+	<a href = "../authority/exit" >退出系统</a><br/>
 </body>
 </html>

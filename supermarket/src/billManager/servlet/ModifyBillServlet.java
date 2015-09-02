@@ -30,16 +30,16 @@ public class ModifyBillServlet extends HttpServlet  {
 			throws ServletException, IOException {
 		try{
 			int id = Integer.parseInt(req.getParameter("id")) ;
-			String providerName = req.getParameter("provider") ;
-			double price = Integer.parseInt(req.getParameter("price")) ;
+			int providerId = Integer.parseInt(req.getParameter("provider")) ;
+			double price = Double.parseDouble(req.getParameter("price")) ;
 			String priceUnit = req.getParameter("goodsUnit");
 			int goodsNum = Integer.parseInt(req.getParameter("goodsNum")) ;
 			String isPay = req.getParameter("isPay") ;
 			String goodsName = req.getParameter("goodsName") ;
 			String goodsDesc = req.getParameter("goodsDesc") ;
 			Timestamp billTime = Timestamp.valueOf(req.getParameter("billTime")) ;
-			Bill bill = new Bill(id,providerName ,price ,priceUnit, goodsNum , isPay ,goodsName, goodsDesc ,billTime) ;
-			if(new BillCheck().checkBill(bill)){
+			Bill bill = new Bill(id,providerId ,price ,priceUnit, goodsNum , isPay ,goodsName, goodsDesc ,billTime) ;
+			if(!new BillCheck().checkBill(bill)){
 				throw new FormDataException("表单数据填写错误") ;
 			}
 			new BillService().modifyBill(bill) ;

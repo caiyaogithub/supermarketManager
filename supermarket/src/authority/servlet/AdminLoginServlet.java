@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import authority.service.AdminLoginService;
+import authority.service.LoginService;
 /**
  * 
  * @description 处理管理员登录Servlet 
@@ -27,7 +27,7 @@ public class AdminLoginServlet extends HttpServlet {
 		String adminName = req.getParameter("name") ;
 		String adminPassword = req.getParameter("password") ;
 		try{
-			if(new AdminLoginService().checkExist(adminName , adminPassword )){
+			if(new LoginService().checkExist(adminName , adminPassword , 1 )){
 				req.getSession().setAttribute("admin", adminName) ;
 				/*页面跳转使用重定向，在页面重定向时会经过过滤器判断权限*/
 				// 正确跳转方式：

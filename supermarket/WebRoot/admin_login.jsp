@@ -8,9 +8,11 @@
 <title>管理员登录</title>
 </head>
 <body>
-	<form action="authority/AdminLogin" method = "post"  >
+	<div width = "500" align = "center">
+		<h1>管理员登录</h1>
+		<form action="authority/AdminLogin" method = "post"  >
 		用户名：<input type = "text" name = "name" /> <br>
-		密码： <input type = "text" name = "password" /><br>
+		密码： <input type = "password" name = "password" /><br>
 		<input type = "submit" value = "提交" />
 		<span>
 		<%
@@ -22,5 +24,7 @@
 		<%=result %>
 		</span>
 	</form>
+	</div>
+	
 </body>
 </html>

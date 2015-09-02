@@ -75,6 +75,17 @@ public class UserService {
 		CachedRowSet cachedRowSet = userManagerDao.selectUserByName(userName) ;
 		return cachedRowSet.next() ;
 	}
+	/**
+	 * 检查用户表中是否已经存在给定的用户名(用户ID不为id的用户)
+	 * @param userName 需要检查是否重复的用户名
+	 * @param id 用户ID。要进行比较的是除该ID值以外的用户
+	 * @return
+	 */
+	public boolean checkModifyUserNameExist(String userName , int id ) throws Exception {
+		UserManagerDAO userManagerDao = new UserManagerDaoImpl() ;
+		CachedRowSet cachedRowSet = userManagerDao.selectUserByNameExceptId(userName , id ) ;
+		return cachedRowSet.next() ;
+	}
 	static class Test{
 		public static void main(String[] args) {
 			UserService demo = new UserService() ;

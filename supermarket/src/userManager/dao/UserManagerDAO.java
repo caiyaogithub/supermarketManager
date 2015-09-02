@@ -49,4 +49,12 @@ public interface UserManagerDAO {
 	 * @throws Exception
 	 */
 	public CachedRowSet selectUserByName(String userName ) throws Exception ;
+	/**
+	 * 查询用户名为userName而且用户ID不为id的用户
+	 * @param userName 用户名
+	 * @param id 用户ID
+	 * @return 
+	 * @throws Exception
+	 */
+	public CachedRowSet selectUserByNameExceptId(String userName , int id ) throws Exception ;
 }

@@ -34,7 +34,10 @@
 </script>
 </head>
 <body>
-	<table>
+<div width = "1000" align = "center">
+	<h1>用户管理页面</h1>
+	<h4>用户列表</h4>
+	<table border="2px solid" >
 		<tr>
 			<th>用户ID</th>
 			<th>用户名</th>
@@ -58,6 +61,10 @@
 				</tr>
 		</c:forEach>	
 	</table>
-	<a href = "addUser.jsp" >新增用户</a>
+</div>
+<br/><br/><br/>
+<a href = "addUser.jsp" >新增用户</a><br/><br/><br/><br/>
+
+<a href = "../admin/admin_main.jsp">返回主功能页面</a>
 </body>
 </html>

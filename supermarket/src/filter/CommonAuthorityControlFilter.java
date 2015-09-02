@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 
  * @description 
- *              访问/providerManager、/billManager下资源的控制，首先判断session中userlogin属性或者admin属性是否有值
+ *              访问/providerManager、/billManager、/commonUser下资源的控制，首先判断session中userlogin属性或者admin属性是否有值
  *              ，即判断普通用户或者管理员是否登陆
  *
  * @author hello world
@@ -27,7 +27,10 @@ public class CommonAuthorityControlFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest)req ;
-		if(httpRequest.getSession().getAttribute("admin") == null && httpRequest.getSession().getAttribute("userlogin") == null){
+		String admin = (String)((HttpServletRequest)req).getSession().getAttribute("admin") ;
+		String user = (String)((HttpServletRequest)req).getSession().getAttribute("userlogin") ;
+		
+		if((admin == null || admin.equals("")) && ((user == null || user.equals("")))){
 			((HttpServletResponse)resp).sendRedirect("../userLogin.jsp");
 		}else{
 			chain.doFilter(req, resp) ;
