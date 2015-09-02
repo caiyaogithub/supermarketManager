@@ -28,14 +28,13 @@
 		}
 	}
 	function checkPsdConsistent(){
-		var password = document.getElementById("password") ;
-		var rpassword = document.getElementById("rpassword") ;
+		var password = document.getElementById("password").value ;
+		var rpassword = document.getElementById("rpassword").value ;
 		if(password != rpassword ){
 			document.getElementById("psdCheck").innerHTML = "两次密码输入不匹配" ;
+		}else{
+			document.getElementById("psdCheck").innerHTML = "" ;
 		}
-	}
-	function cancelAdd(){
-		
 	}
 </script>
 </head>
@@ -58,11 +57,11 @@
  	</tr>
  	<tr>
  		<td>用户密码：</td>
- 		<td><input type = "text" name = "password" onblur = "checkPsdConsistent()"/></td>
+ 		<td><input type = "text" name = "password" id = "password" onblur = "checkPsdConsistent()"/></td>
  	</tr>
  	<tr>
  		<td>确认密码: </td>
- 		<td><input type = "text" name = "rpassword" onblur = "checkPsdConsistent()"/> <span id = "psdCheck"></span></td>
+ 		<td><input type = "text" name = "rpassword" id = "rpassword"  onblur = "checkPsdConsistent()"/> <span id = "psdCheck"></span></td>
  	</tr>
  	<tr>
  		<td>用户性别 ：</td>

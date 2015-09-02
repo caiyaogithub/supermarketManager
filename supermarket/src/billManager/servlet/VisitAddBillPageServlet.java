@@ -28,8 +28,9 @@ public class VisitAddBillPageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try{
+			String result = req.getParameter("result") ;
 			req.setAttribute("providers", new ProviderService().allProvider() ) ;
-			req.getRequestDispatcher("../billManager/addBill.jsp").forward(req, resp) ;
+			req.getRequestDispatcher("../billManager/addBill.jsp?result" + result ).forward(req, resp) ;
 		}catch(Exception e ){
 			e.printStackTrace() ;
 			resp.sendRedirect("../error.jsp") ;

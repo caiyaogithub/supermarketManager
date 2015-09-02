@@ -49,7 +49,7 @@
 	</div>
 	<hr/>
 	<h1>账单信息</h1><br/>
-	<table>
+	<table border="2px solid">
 		<tr>
 			<th>账单ID</th>
 			<th>商品名</th>

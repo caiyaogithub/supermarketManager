@@ -66,8 +66,9 @@
 	    	</tr>
 	    	
 	    	<tr>
+	    	<!-- 订单时间不能修改 -->
 	    		<td>订单时间</td>
-	    		<td><input type = "text" name = "billTime"  value = "${billInfo.billTime }"/></td>
+	    		<td>${billInfo.billTime }<input type = "hidden" name = "billTime"  value = "${billInfo.billTime }"/></td>
 	    	</tr>
 	    	
 	    	<tr>

@@ -26,7 +26,7 @@
   <table>
   	<tr>
   		<td>供应商：</td>
-  		<td><select name = "provider">
+  		<td><select name = "providerId">
  				<option>------请选择供应商------</option>
  				<c:forEach items="${providers}" var = "provider">
  					<option value="${provider.providerId}">${provider.providerName}</option>

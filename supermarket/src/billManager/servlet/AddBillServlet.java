@@ -46,10 +46,10 @@ public class AddBillServlet extends HttpServlet {
 			resp.sendRedirect("listBill") ;
 		}catch(NumberFormatException e){
 			e.printStackTrace() ;
-			resp.sendRedirect("../billManager/addBill?result=1") ;
+			resp.sendRedirect("../billManager/visitAddBill?result=1") ;
 		}catch(FormDataException e ){
 			e.printStackTrace() ;
-			resp.sendRedirect("../billManager/addBill?result=1") ;
+			resp.sendRedirect("../billManager/visitAddBill?result=1") ;
 		}catch(Exception e ){
 			e.printStackTrace() ; 
 			resp.sendRedirect("../error.jsp");

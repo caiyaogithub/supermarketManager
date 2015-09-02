@@ -37,7 +37,8 @@ public class ModifyBillServlet extends HttpServlet  {
 			String isPay = req.getParameter("isPay") ;
 			String goodsName = req.getParameter("goodsName") ;
 			String goodsDesc = req.getParameter("goodsDesc") ;
-			Timestamp billTime = Timestamp.valueOf(req.getParameter("billTime")) ;
+			// 订单时间不能修改
+			Timestamp billTime = Timestamp.valueOf(req.getParameter("billTime"))  ;
 			Bill bill = new Bill(id,providerId ,price ,priceUnit, goodsNum , isPay ,goodsName, goodsDesc ,billTime) ;
 			if(!new BillCheck().checkBill(bill)){
 				throw new FormDataException("表单数据填写错误") ;
