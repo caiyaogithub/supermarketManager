@@ -66,7 +66,7 @@
  	</tr>
  	<tr>
  		<td><input type = "submit" value = "提交" /></td>
- 		<td><input type = "button" value = "取消添加" onclick = "javascript:window.history.back(-1)"/></td>
+ 		<td><input type = "button" value = "取消添加" onclick = "javascript:window.location.href='../providerManager/listProvider'"/></td>
  	</tr>
  </table>
  </form>

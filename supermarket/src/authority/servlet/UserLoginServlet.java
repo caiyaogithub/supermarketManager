@@ -29,6 +29,7 @@ public class UserLoginServlet extends HttpServlet {
 		try{
 			if(new LoginService().checkExist(userName , userPassword , 0 )){
 				req.getSession().setAttribute("userlogin", userName) ;
+				req.getSession().setAttribute("currentLogin", "user") ;
 				resp.sendRedirect("../commonUser/user_main.jsp") ;
 			}else{
 				resp.sendRedirect("../user_login.jsp?result=1") ;

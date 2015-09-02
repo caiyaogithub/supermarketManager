@@ -7,9 +7,12 @@
 <title>用户功能页面</title>
 </head>
 <body>
-	<span>欢迎用户：<font>${userlogin} 登录系统</font></span><br />
-	<a href = "../billManager/listBill">订单管理</a> <br/>
-	<a href = "../providerManager/listProvider">供应商管理</a><br/> 
+<span>欢迎用户：<font>${userlogin} 登录系统</font></span><br />
+<div width = "500" align ="center"> 
+<h1>普通用户功能页面</h1>
+	<a href = "../billManager/listBill">订单管理</a> <br/><br/>
+	<a href = "../providerManager/listProvider">供应商管理</a><br/> <br/>
 	<a href = "../authority/exit" >退出系统</a><br/>
+</div>
 </body>
 </html>

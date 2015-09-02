@@ -74,7 +74,7 @@
 	    	<tr></tr>
 	    	<tr>
 	    		<td colspan="1"><input type = "submit" value = "提交修改"/></td>
-	    		<td colspan = "1" ><input type = "button" value = "取消修改" onclick = "javascript:window.history.back(-1);" /></td>
+	    		<td colspan = "1" ><input type = "button" value = "取消修改" onclick = "javascript:window.location.href='../userManager/listUser'" /></td>
 	    	</tr>
 	    </table>
 	</form>

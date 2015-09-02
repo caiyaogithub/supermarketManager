@@ -65,6 +65,6 @@
 <br/><br/><br/>
 <a href = "addUser.jsp" >新增用户</a><br/><br/><br/><br/>
 
-<a href = "../admin/admin_main.jsp">返回主功能页面</a>
+<a href = "${sessionScope.currentLogin == 'admin' ? '../admin/admin_main.jsp' : '../commonUser/user_main.jsp'}">返回主功能页面》》》</a>
 </body>
 </html>

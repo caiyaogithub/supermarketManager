@@ -28,7 +28,10 @@ public class AdminLoginServlet extends HttpServlet {
 		String adminPassword = req.getParameter("password") ;
 		try{
 			if(new LoginService().checkExist(adminName , adminPassword , 1 )){
+				// 将管理员名设置进session，方便在jsp页面中取
 				req.getSession().setAttribute("admin", adminName) ;
+				// 记录当前登录用户的角色
+				req.getSession().setAttribute("currentLogin", "admin") ;
 				/*页面跳转使用重定向，在页面重定向时会经过过滤器判断权限*/
 				// 正确跳转方式：
 				resp.sendRedirect("../admin/admin_main.jsp") ;
